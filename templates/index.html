@@ -1,0 +1,410 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RDEM{% block title %} {% endblock title %}</title>
+    <!--!bosstrap-link-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* !HERO-İMG-CAROUSEL */
+      .hero-img {
+        height: 100vh;
+        width: 100%;
+        background: url("{% static 'img/carousel1.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 12%;
+      }
+
+      .hero-img2 {
+        height: 100vh;
+        width: 100%;
+        background: url("{% static 'img/carousel2.jpg' %}") !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        background-position: 50% 20% !important;
+      }
+      .hero-img3 {
+        height: 100vh;
+        width: 100%;
+        background: url("{% static 'img/carousel3.jpg' %}") !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        background-position: 50% 20% !important;
+      }
+      .cards-wrapper {
+        display: flex;
+        justify-content: center;
+      }
+      .card img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+      .card {
+        margin: 0 0.5em;
+        box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+        border: none;
+        border-radius: 0;
+      }
+      .carousel-inner {
+        padding: 1em;
+      }
+      .carousel-control-prev,
+      .carousel-control-next {
+        background-color: #e1e1e1;
+        width: 5vh;
+        height: 5vh;
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      @media (min-width: 768px) {
+        .card img {
+          height: 11em;
+        }
+      }
+
+      .kartslider {
+        background-position: 50%, 10%;
+      }
+    </style>
+    <!--!style-css-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <!-- !script -->
+    <script type="text/javascript">
+      let user = "{{request.user}}";
+
+      function getToken(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== "") {
+          const cookies = document.cookie.split(";");
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+              cookieValue = decodeURIComponent(
+                cookie.substring(name.length + 1)
+              );
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+      const csrftoken = getToken("csrftoken");
+    </script>
+  </head>
+  <body>
+    {% block content %} 
+    {% include "includes/_navbartransparent.html" %}
+
+    <!-- !carousel -->
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#myCarousel"
+          data-bs-slide-to="0"
+          class="active"
+          aria-label="Slide 1"
+          aria-current="true"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#myCarousel"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+          class=""
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#myCarousel"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+          class=""
+        ></button>
+      </div>
+      <div class="carousel-inner p-0">
+        <div class="carousel-item active">
+          <div class="hero-img"></div>
+
+          <div class="container">
+            <div class="carousel-caption text-start top-50">
+              <h1 class="fw-bold bg-dark d-inline-block p-2">
+                TÜM ZAMANLARIN EN ŞIK ABİYELERİ!
+              </h1>
+              <p>
+                <a class="btn btn-lg btn-dark rounded-0" href="#kart">KEŞFET</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="hero-img2"></div>
+          <div class="container">
+            <div class="carousel-caption top-50">
+              <h1 class="fw-bold bg-dark d-inline-block p-2">
+                YENİ SEZON ABİYELERDE YAZA ÖZEL İNDİRİMLER
+              </h1>
+              <p>
+                <a class="btn btn-lg btn-dark rounded-0" href="#kart">KEŞFET</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="hero-img3"></div>
+          <div class="container">
+            <div class="carousel-caption text-end top-50">
+              <h1 class="fw-bold bg-dark d-inline-block p-2">
+                TÜM ÜRÜNLERDE İNDİRİM!
+              </h1>
+              <p>
+                <a class="btn btn-lg btn-dark rounded-0" href="#kart">KEŞFET</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#myCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#myCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!--!Main-->
+    <main class="mt-5">
+      <div class="container-fluid">
+        <!--!section-one-->
+        <section class="section-one mt-5">
+          <hr />
+          <div class="row">
+            <!--!aside-search-->
+            {% include "includes/_search.html" %}
+            <!--!Card-->
+            <div class="col-md-9" id="kart">
+              <div class="row justify-content-start mb-5">
+                {% include "includes/_cart.html" %}
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!--!footer-Carousel-->
+    {% if carousel %}
+    <div
+      id="carouselExampleAutoplaying"
+      class="carousel slide"
+      data-bs-ride="carousel "
+    >
+      <div class="carousel-inner">
+        <div class="text-center p-2 d-flex">
+          <div class="w-100 border-2 border-bottom border-dark sm-hide"></div>
+          <div class="text-center col-sm-4 col-12 fs-1">
+            <span>ÇOK SATANLAR</span>
+          </div>
+          <div class="w-100 border-2 border-bottom border-dark sm-hide"></div>
+        </div>
+        {% for i in carousel %} 
+        {% if i.is_carousel and i.is_active %} 
+        {% if forloop.counter0|divisibleby:4 %}
+
+        <div class="carousel-item active">
+          <div class="d-flex justify-content-start container px-4">
+            {% endif %}
+
+            <div class="col-md-3 col-sm-6 px-4 py-4">
+              <div class="product-grid text-center bg-light">
+                <div class="product-image overflow-hidden position-relative">
+                  <a href="{% url 'üründetay' i.slug %}" class="image d-block">
+                    <img class="pic-1 w-100 h-auto" src="{{i.resimbir.url}}" />
+                    <img
+                      class="pic-2 w-100 h-100 opacity-0 position-absolute top-0 start-0"
+                      src="{{i.resimiki.url}}"
+                    />
+                  </a>
+                </div>
+                <div class="product-content text-start">
+                  <h3 class="title fs-6 text-capitalize fw-bolder">
+                    <a href="{% url 'üründetay' i.slug %}">{{i.isim}}</a>
+                  </h3>
+                  <div class="price-card fw-bold fs-5">₺{{i.price|floatformat:2}}</div>
+                </div>
+              </div>
+            </div>
+            {% if forloop.counter|divisibleby:4 or forloop.last %}
+          </div>
+        </div>
+        {% endif %} 
+        {% endif %} 
+        {% endfor %}
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    {% endif %} 
+    {% include "includes/_hizmetbilgi.html" %} 
+    {% endblock content %}
+
+    <!-- !footer -->
+    <div class="container-fluid bg-dark text-light">
+      <footer class="container pt-5">
+        <div class="row">
+          <div class="col-6 col-md-2 mb-3">
+            <h5>Kurumsal</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-light">Anasayfa</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-light">Hakkımızda</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-light">Bize Ulaşın</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-md-2 mb-3">
+            <h5>Müşteri İlişkileri</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-light">Üyelik</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-light"
+                  >Değişim & İade Koşulları</a
+                >
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-light"
+                  >Mesafeli Satış Sözleşmesi</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-md-2 mb-3">
+            <h5>Yardım</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-light"
+                  >Müşteri Hizmetleri</a
+                >
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-light"
+                  >Sıkça Sorulan Sorular</a
+                >
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-light">Kargo Takibi</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-5 offset-md-1 mb-3">
+            <form>
+              <h5>BİZDEN HABER ALIN!</h5>
+              <p>
+                Bültenimize Üye Olun ! Tüm İndirim ve Fırsatlardan İlk Sizin
+                Haberiniz Olsun !
+              </p>
+              <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                <label for="newsletter1" class="visually-hidden"
+                  >Email address</label
+                >
+                <input
+                  id="newsletter1"
+                  type="text"
+                  class="form-control"
+                  placeholder="E-Posta Adresinizi Giriniz."
+                />
+                <button class="btn btn-primary" type="button">Subscribe</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div
+          class="d-flex flex-column flex-sm-row justify-content-between py-4 border-top"
+        >
+          <p>© 2023</p>
+          <ul class="list-unstyled d-flex">
+            <li class="ms-3">
+              <a class="link-light" href="#">
+                <i class="fa-brands fa-twitter p-1 fs-3"></i>
+              </a>
+            </li>
+
+            <li class="ms-3">
+              <a class="link-light" href="#">
+                <i class="fa-brands fa-instagram p-1 fs-3"></i>
+              </a>
+            </li>
+            <li class="ms-3">
+              <a class="link-light" href="#">
+                <i class="fa-brands fa-facebook p-1 fs-3"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+
+    <!--!fontawesome-script-->
+    <script
+      src="https://kit.fontawesome.com/85d2520bcb.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--!boostrap-script-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+    <!-- !script-js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{% static 'script/script.js' %}"></script>
+    <script src="{% static 'script/cart.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,239 @@
+{% extends "index.html" %} 
+{% load static %} 
+{% block title %}|Ürün Detay{% endblock title %} 
+{% block content %}
+
+<!--!navbar-->
+{% include "includes/_navbardark.html" %}
+
+<div class="container-fluid">
+  <div class="">
+    <!-- content -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row gx-5">
+          <aside class="col-lg-6">
+            {% for i in detay %}
+
+            <div
+              class="border-0 rounded-4 mb-3 d-flex justify-content-start h-75"
+            >
+              <a
+                data-fslightbox="mygalley"
+                class="rounded-4"
+                target="_blank"
+                data-type="image"
+                href="{{i.resimbir.url}}"
+              >
+                <img
+                  style="max-width: 100%; max-height: 100vh; margin: auto"
+                  class="rounded-4 fit h-100"
+                  src="{{i.resimbir.url}}"
+                />
+              </a>
+            </div>
+
+            <div class="d-flex justify-content-start mb-3">
+              {% if i.resimiki %}
+              <a
+                data-fslightbox="mygalley"
+                class="border mx-1 rounded-2 item-thumb"
+                target="_blank"
+                data-type="image"
+                href="{{i.resimiki.url}}"
+              >
+                <img
+                  width="100"
+                  height="140"
+                  class="rounded-2 object-fit-cover"
+                  src="{{i.resimiki.url}}"
+                />
+              </a>
+              {% endif %} {% if i.resimDetayBir %}
+              <a
+                data-fslightbox="mygalley"
+                class="border mx-1 rounded-2 sm-hide"
+                target="_blank"
+                data-type="image"
+                href="{{i.resimDetayBir.url}}"
+                class="item-thumb"
+              >
+                <img
+                  width="100"
+                  height="140"
+                  class="rounded-2"
+                  src="{{i.resimDetayBir.url}}"
+                />
+              </a>
+              {% endif %} {% if i.resimDetayİki %}
+              <a
+                data-fslightbox="mygalley"
+                class="border mx-1 rounded-2 sm-hide"
+                target="_blank"
+                data-type="image"
+                href="{{i.resimDetayİki.url}}"
+                class="item-thumb"
+              >
+                <img
+                  width="100"
+                  height="140"
+                  class="rounded-2"
+                  src="{{i.resimDetayİki.url}}"
+                />
+              </a>
+              {% endif %} {% if i.resimDetayUc %}
+              <a
+                data-fslightbox="mygalley"
+                class="border mx-1 rounded-2 sm-hide"
+                target="_blank"
+                data-type="image"
+                href="{{i.resimDetayÜc.url}}"
+                class="item-thumb"
+              >
+                <img
+                  width="100"
+                  height="140"
+                  class="rounded-2"
+                  src="{{i.resimDetayUc.url}}"
+                />
+              </a>
+              {% endif %}
+            </div>
+            <!-- thumbs-wrap.// -->
+            <!-- gallery-wrap .end// -->
+          </aside>
+          <main class="col-lg-6">
+            <div class="ps-lg-3">
+              <h4 class="title text-dark">{{i.isim}}</h4>
+              <div class="d-flex flex-row my-3">
+                <div class="text-warning mb-1 me-2">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <span class="ms-1"> 4.5 </span>
+                </div>
+                <span class="text-muted"
+                  ><i class="fas fa-shopping-basket fa-sm mx-1"></i>154
+                  Sipariş</span
+                >
+                <span class="text-success ms-2">Stokta</span>
+              </div>
+
+              <div class="mb-3">
+                <span class="h5">{{i.price}}</span>
+                <span class="text-muted">/birim başı</span>
+              </div>
+
+              <p>{{i.aciklama|safe}}</p>
+
+              <div class="row">
+                <dt class="col-3">Tip</dt>
+                <dd class="col-9">Standart</dd>
+
+                <dt class="col-3">Renk</dt>
+                <dd class="col-9">Antrasit</dd>
+
+                <dt class="col-3">Malzeme</dt>
+                <dd class="col-9">Pamuk</dd>
+              </div>
+              <hr />
+
+              <!-- col.// -->
+            </div>
+
+            <a
+              class="btn btn-dark shadow-0 update-cart"
+              data-product="{{i.id}}"
+              data-action="add"
+            >
+              <i class="me-1 fa fa-shopping-basket"></i>Sepete Ekle
+            </a>
+
+            <a
+              href="#"
+              class="btn btn-dark border border-secondary py-2 icon-hover px-3 kalp"
+            >
+              <i class="text-danger me-1 fa fa-heart fa-lg"></i>Favorilere Ekle
+            </a>
+
+            {% endfor %}
+          </main>
+        </div>
+      </div>
+    </section>
+    <!-- content -->
+
+    <section class="bg-light border-top py-4">
+      <div class="container">
+        <div class="row gx-4">
+          <div class="col-lg-8 mb-4">
+            <div class="border rounded-2 px-3 py-2 bg-white">
+              <!-- Pills navs -->
+              <ul
+                class="nav nav-pills nav-justified mb-3"
+                id="ex1"
+                role="tablist"
+              >
+                <li class="nav-item d-flex" role="presentation">
+                  <a
+                    class="nav-link bg-dark d-flex align-items-center justify-content-center w-100 active"
+                    >Yorumlar</a
+                  >
+                </li>
+              </ul>
+              <!-- Pills navs -->
+
+              <!-- Pills content -->
+              <div class="tab-content" id="ex1-content">
+                <div
+                  class="tab-pane fade show active"
+                  id="ex1-pills-1"
+                  role="tabpanel"
+                  aria-labelledby="ex1-tab-1"
+                >
+                  
+                </div>
+              </div>
+              <!-- Pills content -->
+            </div>
+          </div>
+          {% if look %}
+          <div class="col-lg-4">
+            <div class="px-0 border rounded-2 shadow-0">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Kullanıcılar Bu Ürünlerede Baktı!</h5>
+                  {% for i in look %}
+                  <div class="d-flex mb-3">
+                    <a href="{% url 'üründetay' i.slug %}" class="me-3">
+                      <img
+                        src="{{i.resimbir.url}}"
+                        style="min-width: 100px; height: 150px"
+                        class="object-fit-contain"
+                      />
+                    </a>
+                    <div class="info">
+                      <a
+                        href="{% url 'üründetay' i.slug %}"
+                        class="nav-link mb-1"
+                      >
+                        {{i.isim}}
+                      </a>
+                      <strong class="text-dark"> ₺{{i.price}}</strong>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+{% include "includes/_hizmetbilgi.html" %} {% endblock content %}

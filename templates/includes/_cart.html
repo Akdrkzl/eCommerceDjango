@@ -1,0 +1,50 @@
+{% load static %}
+{% for i in urun %} 
+{% if i.is_home and i.is_active %}
+<div class="col-md-3 col-sm-6 mb-5" >
+  <div class="product-grid text-center bg-light">
+    <div class="product-image overflow-hidden position-relative">
+      <a href="{% url 'üründetay' i.slug %}" class="image d-block">
+        <img class="pic-1 w-100 h-auto" src="{{i.resimbir.url}}" />
+        <img
+          class="pic-2 w-100 h-100 opacity-0 position-absolute top-0 start-0"
+          src="{{i.resimiki.url}}" 
+        />
+      </a>
+      <ul class="product-links p-0 m-0 list-unstyled  position-absolute bottom-0">
+        
+        
+        <li class="mb-2">
+          <a data-product="{{i.id}}" data-action="add" class="d-block rounded-circle bg-light update-cart">
+            <i class="fa fa-shopping-cart "></i>
+          </a>
+        </li>
+    
+        
+
+        <li class="mb-2">
+          <a class="d-block rounded-circle bg-light kalp"
+            ><i class="far fa-heart"></i
+          ></a>
+        </li>
+
+
+      </ul>
+    </div>
+    <div class="product-content text-start">
+      <!-- <ul class="rating p-0 list-unstyled">
+        <li class="fa fa-star"></li>
+        <li class="fa fa-star"></li>
+        <li class="fa fa-star"></li>
+        <li class="fa fa-star"></li>
+        <li class="fa fa-star"></li>
+      </ul> -->
+      <h3 class="title fs-6 text-capitalize fw-bolder">
+        <a href="{% url 'üründetay' i.slug %}">{{i.isim}}</a>
+      </h3>
+      <div class="price-card fw-bold fs-5">₺{{i.price|floatformat:2}}</div>
+    </div>
+  </div>
+</div>
+{% endif %} 
+{% endfor %}

@@ -1,0 +1,219 @@
+{% extends "index.html" %} 
+{% load static%}
+{% block title %}|Beden Hesaplama{% endblock title %}
+
+
+{% block content %}
+
+<!--!navbar-->
+{% include "includes/_navbartransparent.html" %}
+
+<!--!beden-hesaplama-form-->
+<section
+  class="vh-100 bg-image  position-relative " 
+  style="
+    background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');
+  "
+>
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img
+                class="img-fluid w-100 h-100"
+                src="https://i.ibb.co/ZXVpTx0/5.jpg"
+                alt=""
+              />
+              <!-- <img class="img-fluid w-100 h-100" src="img/5.jpg" alt=""> -->
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+                <form>
+                  <div class="d-flex align-items-center mb-3 pb-1">
+                    <i
+                      class="fas fa-solid fa-ruler fs-1 me-3"
+                      style="color: #9e0026"
+                    ></i>
+                    <span class="h1 fw-bold mb-0">BEDEN HESAPLAMA</span>
+                  </div>
+
+                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px">
+                    Lütfen Beden Ölçünüzü Giriniz
+                  </h5>
+
+                  <div class="form-outline mb-4 col-md-8">
+                    <label class="form-label" for="gogus">Göğüs Ölçüsü</label>
+                    <input
+                      type="text"
+                      id="gogus"
+                      class="form-control form-control-lg"
+                      placeholder="86-122 Arasında Bir Değer Giriniz."
+                    />
+                  </div>
+
+                  <div class="form-outline mb-4 col-md-8">
+                    <label class="form-label" for="bel">Bel Ölçüsü</label>
+                    <input
+                      type="text"
+                      id="bel"
+                      class="form-control form-control-lg"
+                      placeholder="68-122 Arasında Bir Değer Giriniz."
+                    />
+                  </div>
+
+                  <div class="form-outline mb-4 col-md-8">
+                    <label class="form-label" for="basen">Basen Ölçüsü</label>
+                    <input
+                      type="text"
+                      id="basen"
+                      class="form-control form-control-lg"
+                      placeholder="92-132 Arasında Bir Değer Giriniz."
+                    />
+                  </div>
+                  <p id="yaz" class="fs-1">
+                    <span class="opacity-0">:</span>
+                  </p>
+
+                  <div class="pt-1 mb-4">
+                    <button
+                      class="btn btn-dark btn-lg btn-block"
+                      type="button"
+                      id="hesapla"
+                    >
+                      HESAPLA
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--!body-calculate-script -->
+<script>
+  let gogus = document.querySelector("#gogus");
+  let bel = document.querySelector("#bel");
+  let basen = document.querySelector("#basen");
+  let buton = document.querySelector("#hesapla");
+  let secilenP = document.querySelector("#yaz");
+
+  buton.addEventListener("click", function (event) {
+    bir();
+    console.log(bir());
+    return;
+  });
+
+  function bir() {
+    let gogusBeden;
+    let belBeden;
+
+    // !=" " inputlar boş ise  ve inputa girilen değerler 68-132 arasında değilse ilk if çalışmayacak else çalışıcak.
+    if (
+      gogus.value != "" &&
+      bel.value != "" &&
+      basen.value != "" &&
+      gogus.value >= 86 &&
+      gogus.value <= 122 &&
+      bel.value >= 68 &&
+      bel.value <= 122 &&
+      basen.value >= 92 &&
+      basen.value <= 132
+    ) {
+      //Göğüs Ölçüsü
+      if (gogus.value >= 86 && gogus.value <= 90) {
+        gogusBeden = 36;
+      } else if (gogus.value >= 91 && gogus.value <= 94) {
+        gogusBeden = 38;
+      } else if (gogus.value >= 95 && gogus.value <= 98) {
+        gogusBeden = 40;
+      } else if (gogus.value >= 99 && gogus.value <= 102) {
+        gogusBeden = 42;
+      } else if (gogus.value >= 103 && gogus.value <= 106) {
+        gogusBeden = 44;
+      } else if (gogus.value >= 107 && gogus.value <= 110) {
+        gogusBeden = 46;
+      } else if (gogus.value >= 111 && gogus.value <= 114) {
+        gogusBeden = 48;
+      } else if (gogus.value >= 115 && gogus.value <= 117) {
+        gogusBeden = 50;
+      } else if (gogus.value >= 118 && gogus.value <= 121) {
+        gogusBeden = 52;
+      } else if (gogus.value >= 122 && gogus.value <= 125) {
+        gogusBeden = 54;
+      }
+
+      //bel ölçüsü
+      if (bel.value >= 68 && bel.value <= 72) {
+        belBeden = 36;
+      } else if (bel.value >= 73 && bel.value <= 76) {
+        belBeden = 38;
+      } else if (bel.value >= 77 && bel.value <= 80) {
+        belBeden = 40;
+      } else if (bel.value >= 81 && bel.value <= 84) {
+        belBeden = 42;
+      } else if (bel.value >= 85 && bel.value <= 88) {
+        belBeden = 44;
+      } else if (bel.value >= 89 && bel.value <= 92) {
+        belBeden = 46;
+      } else if (bel.value >= 93 && bel.value <= 96) {
+        belBeden = 48;
+      } else if (bel.value >= 97 && bel.value <= 100) {
+        belBeden = 50;
+      } else if (bel.value >= 101 && bel.value <= 104) {
+        belBeden = 52;
+      } else if (bel.value >= 105 && bel.value <= 108) {
+        belBeden = 54;
+      }
+
+      //basen ölçü
+      if (basen.value >= 92 && basen.value <= 96) {
+        basenBeden = 36;
+      } else if (basen.value >= 97 && basen.value <= 100) {
+        basenBeden = 38;
+      } else if (basen.value >= 101 && basen.value <= 104) {
+        basenBeden = 40;
+      } else if (basen.value >= 105 && basen.value <= 108) {
+        basenBeden = 42;
+      } else if (basen.value >= 109 && basen.value <= 112) {
+        basenBeden = 44;
+      } else if (basen.value >= 113 && basen.value <= 116) {
+        basenBeden = 46;
+      } else if (basen.value >= 117 && basen.value <= 120) {
+        basenBeden = 48;
+      } else if (basen.value >= 121 && basen.value <= 124) {
+        basenBeden = 50;
+      } else if (basen.value >= 125 && basen.value <= 128) {
+        basenBeden = 52;
+      } else if (basen.value >= 129 && basen.value <= 132) {
+        basenBeden = 54;
+      }
+      //büyük olan beden seçilir ve yazdırılır.
+      if (
+        gogusBeden == belBeden ||
+        gogusBeden == basenBeden ||
+        belBeden == basenBeden
+      ) {
+        if (gogusBeden == belBeden && belBeden == basenBeden) {
+          secilenP.innerHTML = `${gogusBeden}Beden`;
+        } else if (gogusBeden == belBeden) {
+          secilenP.innerHTML = `${gogusBeden} Beden`;
+        } else if (gogusBeden == basenBeden) {
+          secilenP.innerHTML = `${gogusBeden} Beden`;
+        } else if (belBeden == basenBeden) {
+          secilenP.innerHTML = `${belBeden} Beden`;
+        }
+      } else {
+        secilenP.innerHTML = ` ${Math.max(gogusBeden, belBeden)} Beden`;
+      }
+    } else {
+      secilenP.innerHTML = "Lütfen 68-132 arasında Sayısal bir değer giriniz.";
+    }
+  }
+</script>
+{% endblock content %}

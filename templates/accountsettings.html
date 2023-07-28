@@ -1,0 +1,57 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+
+{% include "includes/_navbardark.html" %}
+
+<section class="mt-5 h-100">
+        <!-- Hesap -->
+        <div class="container">
+            <div class="row">
+                <div class="col">
+    
+                    <div class="row">
+                        <h1>Hesap Ayarları</h1>
+                        <hr>
+                        <div class="col">
+                            <h4>Hesap İşlemleri</h4>
+                            <button class="btn btn-dark"><a class="text-decoration-none text-light" href="{% url 'userdelete' %}">Hesabı Sil</a></button>
+                        </div>
+                        <div class="col">
+                            <p>{{user.first_name}} {{user.last_name}} </p>
+                            <p>
+                            <strong>{{user.email}}</strong>
+                            </p>
+                            <p>Parola:*******</p>
+                        </div>
+                        <div class="col">
+                            <p><a class="text-dark" href="{% url 'changename' %}">İsim-Soyisim değiştir</a></p> 
+                            <p><a class="text-dark" href="{% url 'changeemail' %}">E-postayı değiştir</a></p> 
+                            <p><a class="text-dark" href="{% url 'changepassword' %}">Parolayı değiştir</a></p> 
+                        </div>
+                        <hr>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col-sm-3 mt-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3>Adres</h3>
+                                    <p>Adres</p>
+                                    <p>Şehir</p>
+                                    <p>Ülke</p>
+                                    <p>Telefon</p>
+                                    <p>Posta Kodu</p>
+                                    <p class="text-end"><a class="btn btn-dark text-end" href="#">Düzenle</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    {% include "includes/_messagesalert.html" %}
+    
+                </div>
+            </div>
+        </div>
+</section>
+
+
+{% endblock content %}

@@ -1,0 +1,77 @@
+{% extends "index.html" %} 
+{% load static %} 
+{% block content %}
+{% include "includes/_navbardark.html" %}
+
+<!--!login-form-->
+<section style="background-color: #f3f3f3; min-height:100vh">
+  <div class="container pt-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem">
+          <div class="row g-0">
+            
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+                
+                <div class="d-flex align-items-center mb-3 pb-1">
+                    <i class="fa-solid fa-user-plus fs-1 me-3" style="color: #9e0026"></i>
+                    <span class="h1 fw-bold mb-0">RDEM</span>
+                </div>
+                <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px">Şimdi Kayıt Olun</h5>
+                
+                
+                <div class="form-outline mb-4">
+                  {% if messages %}
+                  {% for mesaj in messages  %}
+                    <div class="alert alert-{{mesaj.tags}} text-center" role="alert">
+                      {{mesaj}}
+                    </div>
+                  {% endfor %}
+                  {% else %}
+                  {% endif %}
+                    <form action="" method="POST">
+                        {% csrf_token %}
+
+                        <label class="form-label">İsim</label>
+                        <input type="text" name="isim" id="" class="form-control" required/>
+                    
+                        <label class="form-label">Soyİsim</label>
+                        <input type="text" name="soyisim" id="" class="form-control" required/>
+                        
+                        <label class="form-label" >Email</label>
+                        <input type="email" name="email" id="" class="form-control" required>
+
+                        <label class="form-label" >Şifre</label>
+                        <input type="password" name="sifre1" id="" class="form-control" required>
+
+                        <label class="form-label" >Şifre Onay</label>
+                        <input type="password" name="sifre2" id="" class="form-control" required>
+
+                        <input type="submit" value="Kayıt Ol" class="btn btn-dark mt-2">
+
+                    </form>
+                </div>
+                  
+                <p class="mb-5 pb-lg-2" style="color: #393f81">Hesabınız var mı?<a href="{% url 'login' %}" style="color: #393f81">Buradan Giriş Yapın</a></p>
+                <a href="#!" class="small text-muted">Kullanım Şartları</a>
+                <a href="#!" class="small text-muted">Gizlilik Politikası</a>
+
+              </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img
+                src="{% static 'img/carousel3.jpg' %}"
+                alt="login form"
+                class="img-fluid w-100 h-100"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

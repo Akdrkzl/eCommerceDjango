@@ -1,0 +1,76 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+
+{% include "includes/_navbardark.html" %}
+
+    <!--!login-form-->
+    <section style="background-color: #F3F3F3" class="vh-100 " >
+      <div class="container pt-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-xl-10">
+            <div class="card" style="border-radius: 1rem">
+              <div class="row g-0">
+                <div class="col-md-6 col-lg-5 d-none d-md-block">
+                  <img
+                    src="{% static 'img/carousel2.jpg' %}"
+                    alt="login form"
+                    class="img-fluid w-100 h-100"
+                  />
+                </div>
+                <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                  <div class="card-body p-4 p-lg-5 text-black">
+                    
+                      <div class="d-flex align-items-center mb-3 pb-1">
+                        <i
+                          class="fa-solid fa-right-to-bracket fs-1 me-3"
+                          style="color: #9E0026"
+                        ></i>
+                        <span class="h1 fw-bold mb-0">RDEM</span>
+                      </div>
+
+                      <h5
+                        class="fw-normal mb-3 pb-3"
+                        style="letter-spacing: 1px"
+                      >
+                        Hesabınıza Giriş Yapınız
+                      </h5>
+
+                      <div class="form-outline mb-4">
+                        {% include "includes/_messagesalert.html" %}
+                        
+                        <form action="" method='POST'>
+                          {% csrf_token%}
+                    
+                          <label class="form-label" >Email</label>
+                          <input type="text" name="username" id="" class="form-control">
+  
+                          <label class="form-label" >Şifre</label>
+                          <input type="password" name="password" id="" class="form-control">
+                          <input type="submit" value="Giriş Yap" class="btn btn-dark mt-3">
+                        </form>
+
+                      </div>
+
+
+
+
+
+                      <!-- <a class="small text-muted" href="#!">Parolanızı mı unuttunuz?</a> -->
+                      <p class="mb-5 pb-lg-2" style="color: #393f81">
+                        Hesabınız yok mu?
+                        <a href="{% url 'register' %}" style="color: #393f81">Buradan kaydolun</a>
+                      </p>
+                      <a href="#!" class="small text-muted">Kullanım Şartları</a>
+                      <a href="#!" class="small text-muted">Gizlilik Politikası</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock content %}
+

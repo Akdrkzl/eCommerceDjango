@@ -1,0 +1,147 @@
+{% load static %}
+<div class="col-md-3 pe-0 position-sticky">
+    <div
+      class="accordion accordion-flush"
+      id="accordionPanelsStayOpenExample"
+    >
+      <div class="accordion-item">
+        <h6 class="accordion-header text-start p-3">
+          <a class="nav-link" href="{% url 'sepet' %}">
+            SEPET
+            <i class="fa fa-shopping-cart kart-sepet">
+              <span class="text-danger fs-5">{{ cartItems }}</span>
+            </i></a
+          >
+        </h6>
+        <div
+          id="flush-collapseOne"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionFlushExample"
+        ></div>
+      </div>
+
+      <div class="accordion-item" id="accordionPanelsStayOpenExample">
+        <h6 class="accordion-header text-start p-3">
+
+          <form class="d-flex" method="GET"  role="search">
+            <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-dark" type="submit">Search</button>
+          </form>
+        </h6>
+        <div
+          id="panelsStayOpen-collapseOne"
+          class="accordion-collapse collapse "
+          data-bs-parent="#accordionFlushExample"
+        ></div>
+      </div>
+
+      
+     <div class="accordion" id="accordionPanelsStayOpenExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            RENK
+          </button>
+        </h2>
+
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show  " data-bs-parent="#accordionFlushExample">
+
+          <div class="accordion-body d-flex justify-content-start">
+            <a href="{% url 'index' %}?search=Beyaz" class="mx-1">
+              <div style="height: 25px; width: 25px; border: 1px solid; border-radius: 50%; background-color:#fff ;" class=""></div>
+            </a>
+            <a href="{% url 'index' %}?search=Siyah" class="mx-1">
+              <div style="height: 25px; width: 25px; border-radius: 50%; background-color:#000000 ;" class=""></div>
+            </a>
+            <a href="{% url 'index' %}?search=Gri" class="mx-1">
+              <div style="height: 25px; width: 25px; border-radius: 50%; background-color:#56535a ;" class=""></div>
+            </a>
+            <a href="{% url 'index' %}?search=Pudra" class="mx-1">
+              <div style="height: 25px; width: 25px; border-radius: 50%; background-color:#e3cacc ;" class=""></div>
+            </a>
+            <a href="{% url 'index' %}?search=Mavi" class="mx-1">
+              <div style="height: 25px; width: 25px; border-radius: 50%; background-color:#454770 ;" class=""></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseThree"
+            aria-expanded="false"
+            aria-controls="flush-collapseThree"
+          >
+            FİYAT
+          </button>
+        </h2>
+        <div
+          id="flush-collapseThree"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div class="accordion-body">
+              <a class="d-flex text-decoration-none text-dark" href="{% url 'index' %}?search=">
+                <div style="width: 18px; height: 18px; border: 1px solid black; border-radius: 50%; background-color: #fff;" ></div>
+              <div class="mx-1">0-1000 TL</div>
+              </a>
+
+              <a class="d-flex text-decoration-none text-dark" href="{% url 'index' %}?search=1000-5000">
+                <div style="width: 18px; height: 18px; border: 1px solid black; border-radius: 50%; background-color: #fff;" ></div>
+              <div class="mx-1">1000-2000 TL</div>
+              </a>
+
+              <a class="d-flex text-decoration-none text-dark" href="{% url 'index' %}?search=">
+                <div style="width: 18px; height: 18px; border: 1px solid black; border-radius: 50%; background-color: #fff;" ></div>
+              <div class="mx-1">2000-3000 TL</div>
+              </a>
+
+              <a class="d-flex text-decoration-none text-dark" href="{% url 'index' %}?search=">
+                <div style="width: 18px; height: 18px; border: 1px solid black; border-radius: 50%; background-color: #fff;" ></div>
+              <div class="mx-1">3000-5000 TL</div>
+              </a>
+
+              <a class="d-flex text-decoration-none text-dark" href="{% url 'index' %}?search=">
+                <div style="width: 18px; height: 18px; border: 1px solid black; border-radius: 50%; background-color: #fff;" ></div>
+              <div class="mx-1">5000-6000TL</div>
+              </a>
+           
+          </div>
+        </div>
+      </div> -->
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseFour"
+            aria-expanded="false"
+            aria-controls="flush-collapseFour"
+          >
+            KATEGORİ
+          </button>
+        </h2>
+        <div
+          id="flush-collapseFour"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div class="accordion-body">
+            {% for i in kategori %}
+            <a class="d-flex text-decoration-none text-dark" href="{% url 'index' %}?search={{i.isim}}">
+            <div class="mx-1">{{i.isim}}</div>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>

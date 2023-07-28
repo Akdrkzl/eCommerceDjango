@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+
+{% include "includes/_navbardark.html" %}
+
+<section class="h-75 mt-5">
+    <div class="container-fluid">
+        <div class="container">
+            <h1 class="text-center">Kullanıcı Adı Değiştirme</h1>
+
+            <span>Mevcut isim: {{request.user.first_name}}</span> <br>
+            <span>Mevcut Soyisim: {{request.user.last_name}}</span>
+            <form action="" method='POST'>
+                {% csrf_token%}
+                
+                <label class="form-label" >Yeni İsim</label>
+                <input type="text" name="newName" id="" class="form-control">
+
+                <label class="form-label" >Yeni Soyisim</label>
+                <input type="text" name="newLastName" id="" class="form-control">
+
+                <input type="submit" value="Değişiklikleri Kaydet" class="btn btn-dark mt-3">
+              </form>
+              {% include "includes/_messagesalert.html" %}
+              
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

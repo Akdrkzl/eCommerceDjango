@@ -1,0 +1,74 @@
+{% extends "index.html" %} 
+{% load static %} 
+{% block content %} 
+{% include "includes/_navbardark.html" %}
+
+<!-- !border-radius -->
+<!-- <div class="container-fluid d-flex justify-content-evenly mt-5">
+      <a
+        class="d-flex flex-column align-items-center text-decoration-none text-dark"
+        href="#"
+      >
+        <img class="products-img products-img1" />
+        <span>Abiye Modelleri</span>
+      </a>
+      <a
+        class="d-flex flex-column align-items-center text-decoration-none text-dark"
+        href="#"
+      >
+        <img class="products-img products-img2" />
+        <span>Takımlar</span>
+      </a>
+      <a
+        class="d-flex flex-column align-items-center text-decoration-none text-dark"
+        href="#"
+      >
+        <img class="products-img products-img3" />
+        <span>Tunikler</span>
+      </a>
+      <a
+        class="d-flex flex-column align-items-center text-decoration-none text-dark"
+        href="#"
+      >
+        <img class="products-img products-img4 sm-hide" />
+        <span class="sm-hide">Büyük Beden Elbiseler</span>
+      </a>
+      <a
+        class="d-flex flex-column align-items-center text-decoration-none text-dark"
+        href="#"
+      >
+        <img class="products-img products-img5 sm-hide" />
+        <span class="sm-hide">Yeni Koleksiyon Modelleri</span>
+      </a>
+    </div> -->
+
+<!--Main-->
+<main class="mt-5">
+  <div class="container-fluid">
+    <!--!section-one-->
+    <section class="section-one mt-5">
+      <div class="row">
+        <!--!aside-->
+        {% include "includes/_search.html" %}
+
+        <!--!Card-->
+        <div class="col-md-9" id="kart">
+          <div class="row justify-content-start">
+            {% if urun|length > 0 %}
+            {% include "includes/_cart.html" %}
+            
+            {% else %}
+            <div class="alert alert-danger col-md-12">STOKLARIMIZ YENİLENİYOR BİZİ TAKİP ETMEYE DEVAM EDİN</div>
+
+            {% endif %}
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+{% include "includes/_hizmetbilgi.html" %}
+{% endblock content %}

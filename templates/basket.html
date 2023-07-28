@@ -1,0 +1,84 @@
+{% extends "index.html" %} 
+{% load static %} 
+{% block content %}
+
+<!-- !navbar -->
+{% include "includes/_navbardark.html" %}
+
+<div class="row" style="color: #f3f3f3;">
+  <div class="col-sm-6 m-auto mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h1><a class="btn btn-dark" href="/"><i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>Alışverişe Devam et</a></h1>
+        <hr>
+        <div class="card-body">
+         <div class="row">
+          <div class="col-sm-4">
+            <p>Toplam Ürün: <strong>{{order.get_cart_items}} Adet</strong></p>
+          </div>
+          <div class="col-sm-5">
+            <p>Sepet Toplam Fiyat: <strong>{{order.get_cart_total}}₺</strong></p>
+          </div>
+          <div class="col-sm-3">
+            <a class="btn btn-dark" href="{% url 'kontrol' %}">Kontrol Et</a>
+          </div>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- !card -->
+<div class=" container-products baskethtml">
+  <div class="product-header">
+    <h5 class="product-title">ÜRÜN</h5>
+    <h5 class="price sm-hide">FİYAT</h5>
+    <h5 class="quantity">MİKTAR</h5>
+    <h5 class="total">TOPLAM</h5>
+  </div>
+  
+  {% if items %}
+  <div class="kartlar">
+    {% for item in items %}
+    <div class="products-sepet">
+      <div class="product">
+        <img src="{{item.product.resimbir.url }}" style="max-width: 150px" />
+        <span class="sm-hide">{{item.product.isim}}</span>
+      </div>
+      <div class="price sm-hide">₺{{item.product.price|floatformat:2}}</div>
+      <div class="quantity">
+        <button data-product="{{item.product.id}}"
+          class="btn btn-dark badge badge-secondary decrease update-cart"
+          type="button"
+          data-action="remove"
+        >
+          -
+        </button>
+        <span>{{item.quantity}}</span>
+        <button data-product="{{item.product.id}}"
+          class="btn btn-dark badge badge-inf increase update-cart "
+          type="button"
+          data-action="add"
+        >
+          +
+        </button>
+        <a>
+          <button data-product="{{item.product.id}}"
+            class="remove btn btn-danger badge badge-info increase-item ms-3 update-cart"
+            type="button"
+            data-action="delete"
+          >
+            X
+          </button></a
+        >
+      </div>
+      <div class="total">₺{{item.get_total}}</div>
+    </div>
+    {% endfor %}
+  
+  </div>
+  
+  {% endif %}
+
+</div>
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+
+{% include "includes/_navbardark.html" %}
+
+<section class="h-75 mt-5">
+    <div class="container-fluid">
+        <div class="container">
+            <h1 class="text-center">E-Posta Değiştirme</h1>
+            <span>Mevcut E-posta: {{request.user.email}}</span>
+            <form action="" method='POST'>
+                {% csrf_token%}
+                
+                <label class="form-label" >Yeni E-posta</label>
+                <input type="text" name="newEmail" id="" class="form-control">
+
+                <input type="submit" value="Değişiklikleri Kaydet" class="btn btn-dark mt-3">
+              </form>
+              {% include "includes/_messagesalert.html" %}
+              
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

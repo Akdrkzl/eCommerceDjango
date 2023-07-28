@@ -1,0 +1,10 @@
+{% load static %}
+{% if messages %}
+{% for mesaj in messages  %}
+  <span id="mesaj" class="text-{{mesaj.tags}} align-items-center">
+    {{mesaj}}
+  </span>
+{% endfor %}
+{% else %}
+{% endif %}
+
